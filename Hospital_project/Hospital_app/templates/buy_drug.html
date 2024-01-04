@@ -1,34 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-
-<form method="POST" action="{% url 'buy_drug' %}">
-  {% csrf_token %}
-  <div class="container">
-      <div class="mt-2 p-1 bg-danger text-white rounded">
-          <h5>เบิกยา</h5>
-      </div>
-      <div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">
-          <label for="drug_id">ชื่อยา : </label>
-          <select name="drug_id" id="select_drug">
-              {% for drug in drugdata %}
-                  <option value="{{ drug.drug_id }}">{{ drug.drug_name }}</option>
-              {% endfor %}
-          </select>
-          <label for="drug_qty">จำนวน : </label>
-          <select name="drug_qty" id="select_qty">
-              {% for drug in drugdata %}
-                  <option value="{{ drug.drug_qty }}">{{ drug.drug_qty }}</option>
-              {% endfor %}
-          </select>
-          <label for="username">ชื่อคนเบิก : </label>
-          <select name="username" id="select_username">
-              {% for user in userdata %}
-                  <option value="{{ user.username }}">{{ user.username }}</option>
-              {% endfor %}
-          </select>
-          <button type="submit" class="btn btn-success">บันทึก</button>
-      </div>
-  </div>
-</form>
-
-{% endblock content %}
+<div class="mt-2 pt-2 ps-3 pb-1 bg-danger text-white rounded">
+    <h4>จัดการประวัติการเบิกยา</h4>
+</div>
+<div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>ชื่อผู้เบิก</th>
+                <th>ที่อยู่</th>
+                <th>เบอร์โทร</th>
+                <th>ชื่อยาที่เบิก</th>
+                <th>จำนวน</th>
+                <th>เครื่องมือ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in report %}
+                <tr>
+                    <td class="pt-3">{{ i.username }}</td>
+                    <td class="pt-3">{{ i.address }}</td>
+                    <td class="pt-3">{{ i.tal }}</td>
+                    <td class="pt-3">{{ i.drug_name }}</td>
+                    <td class="pt-3">{{ i.drug_qty }}</td>
+                    <td><button type="button" class="btn btn-outline-danger">ยกเลิกรายการ</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
