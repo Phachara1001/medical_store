@@ -24,5 +24,14 @@ class uesrbuy(models.Model):
     def __str__(self):
         return f"{self.username} , {self.tal}"
     
+class report(models.Model):
+    user_id = models.CharField(max_length=255)
+    username = models.CharField(max_length=255)
+    drug_name = models.CharField(max_length=255)
+    drug_type = models.ForeignKey(d_type, on_delete=models.CASCADE)
+    drug_qty = models.IntegerField()
+    def __str__(self):
+        return f"{self.username} , {self.drug_qty}"
+    
 
     

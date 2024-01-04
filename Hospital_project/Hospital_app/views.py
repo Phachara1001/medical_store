@@ -160,6 +160,6 @@ def register_view(request):
 
 def report_a(request):
     show_types = uesrbuy.objects.all() 
-    show_type = d_type.objects.all() 
-    context  = {"type" : show_type,"uesr" : show_types} 
+    show_all = show_types
+    context  = {"user" : show_all} 
     return render(request,'report_a.html',context) 

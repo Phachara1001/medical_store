@@ -7,17 +7,19 @@
     <table class="table table-responsive">
         <thead>
             <tr>
+                <th>รหัสผู้เบิก</th>
                 <th>ชื่อคนเบิก</th>
                 <th>ที่อยู่</th>
                 <th>เบอร์โทร</th>
             </tr>
         </thead>
         <tbody>
-            {% for user_buy in uesrbuy %}
+            {% for i in user %}
                 <tr>
-                    <td>{{ user_buy.username }}</td>
-                    <td>{{ user_buy.address }}</td>
-                    <td>{{ user_buy.tal }}</td>
+                    <td>{{ i.user_id }}</td>
+                    <td>{{ i.username }}</td>
+                    <td>{{ i.address }}</td>
+                    <td>{{ i.tal }}</td>
                 </tr>
             {% endfor %}
         </tbody>
