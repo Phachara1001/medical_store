@@ -7,19 +7,21 @@
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>รหัสผู้เบิก</th>
-                <th>ชื่อคนเบิก</th>
+                <th>ชื่อผู้เบิก</th>
                 <th>ที่อยู่</th>
                 <th>เบอร์โทร</th>
+                <th>ชื่อยาที่เบิก</th>
+                <th>จำนวน</th>
             </tr>
         </thead>
         <tbody>
-            {% for i in user %}
+            {% for i in report %}
                 <tr>
-                    <td>{{ i.user_id }}</td>
                     <td>{{ i.username }}</td>
                     <td>{{ i.address }}</td>
                     <td>{{ i.tal }}</td>
+                    <td>{{ i.drug_name }}</td>
+                    <td>{{ i.drug_qty }}</td>
                 </tr>
             {% endfor %}
         </tbody>

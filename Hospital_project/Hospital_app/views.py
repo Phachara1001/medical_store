@@ -122,12 +122,12 @@ def buy_drug_view(request):
         drug_qty = request.POST.get('drug_qty')
         username = request.POST.get('username')
         selected_drug = get_object_or_404(drug, drug_name=drug_name)
-        selected_user = get_object_or_404(uesrbuy, username=username)
-        new_entry = uesrbuy(drug_id=selected_drug, username=selected_user)
+        selected_user = get_object_or_404(userbuy, username=username)
+        new_entry = userbuy(drug_id=selected_drug, username=selected_user)
         new_entry.save()
         return redirect('report')
     drugs = drug.objects.all()
-    users = uesrbuy.objects.all()
+    users = userbuy.objects.all()
     context = {
         "drugdata": drugs,
         "userdata": users,
@@ -137,12 +137,14 @@ def buy_drug_view(request):
 
 @login_required(login_url="/login")
 def buy_drug(request):
-    context = {"uesrbuy": uesrbuy.objects.all(), "drugs": drug.objects.all()}
+    context = {"userbuy": userbuy.objects.all(), "drugs": drug.objects.all()}
     if request.method == "POST":
-        table = uesrbuy()
+        table = report_buy()
         table.username = request.POST.get('Busername')
         table.address = request.POST.get('Baddress')
         table.tal = request.POST.get('Btal')
+        table.drug_name = request.POST.get('drug_name')
+        table.drug_qty = request.POST.get('quantity')
         table.save()
     return render(request, 'buy_drugu.html', context)
 
@@ -159,7 +161,6 @@ def register_view(request):
     return render(request, 'register.html')
 
 def report_a(request):
-    show_types = uesrbuy.objects.all() 
-    show_all = show_types
-    context  = {"user" : show_all} 
+    show_report = report_buy.objects.all() 
+    context  = {"report" : show_report} 
     return render(request,'report_a.html',context) 

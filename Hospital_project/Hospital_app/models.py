@@ -16,7 +16,7 @@ class drug(models.Model):
     def __str__(self):
         return f"{self.drug_name} , {self.drug_exp}"
     
-class uesrbuy(models.Model):
+class userbuy(models.Model):
     user_id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
@@ -24,11 +24,11 @@ class uesrbuy(models.Model):
     def __str__(self):
         return f"{self.username} , {self.tal}"
     
-class report(models.Model):
-    user_id = models.CharField(max_length=255)
+class report_buy(models.Model):
     username = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    tal = models.CharField(max_length=255)
     drug_name = models.CharField(max_length=255)
-    drug_type = models.ForeignKey(d_type, on_delete=models.CASCADE)
     drug_qty = models.IntegerField()
     def __str__(self):
         return f"{self.username} , {self.drug_qty}"
