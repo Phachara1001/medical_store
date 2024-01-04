@@ -1,19 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">
-<form action="" method="POST">
-{% csrf_token %}
-<h5>เพิ่มข้อมูลยา</h5>
-รูปภาพยา : <input class="form-control" type="file" id="drug_img" required>
-ชื่อยา : <input type="text" name="drug_name" required>
-ประเภท : <select name="drug_type">
-{% for i in drug_type %}
-<option value="{{i.type_id}}">{{i.type_name}}</option>
-{% endfor %}
-</select>
-จำนวน : <input type="number" name="drug_qty" required>
-วันหมดอายุ : <input type="date" name="drug_expired" required>
-<button type="submit" class="btn btn-success" >บันทึก</button>
+<form method="POST">
+    {% csrf_token %}
+    <div class="container p-2 mt-2 rounded-lg shadow">
+        <div class="mt-2 p-1 bg-danger text-white rounded">
+            <h5>เพิ่มข้อมูลยา</h5>
+        </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">ชื่อยา</label>
+                <input type="text" class="form-control mb-2" placeholder="ชื่อยา" name="drug_name" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">ประเภท</label>
+                <select class="form-control" name="drug_name" id="drug_name" required>
+                    {% for i in drug_type %}
+                    <option value="{{i.type_id}}">{{i.type_name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">จำนวน</label>
+                <input type="number" min="0" max="10" class="form-control" name="quantity" id="quantity" required>
+                    {% for drug in drugs %}
+                    <option value="{{ drug.drug_name }}">{{ drug.drug_name }}</option>
+                {% endfor %}
+                </select>
+                <br>
+                <label for="quantity">วันหมดอายุ :</label>
+                <input class="form-control" type="date" name="drug_expired" required>
+              </div>
+              
+            <button type="submit" class="btn btn-success mt-3 mb-3 w-full" >บันทึก</button>
+        </div>
+    </div>
 </form>
 </div>
 {% endblock  %}
