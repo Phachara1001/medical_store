@@ -5,16 +5,34 @@
 <!-- buy_drugu.html -->
 <form method="POST">
     {% csrf_token %}
-    <div class="container">
+    <div class="container p-2 mt-2 rounded-lg shadow">
         <div class="mt-2 p-1 bg-danger text-white rounded">
-            <h5> เพิ่มรายชื่อขอเบิกยา </h5>
+            <h5>ขอเบิกยา</h5>
         </div>
-        <div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">           
-            <input type="number" min="0" max="10" name="quantity" id="quantity">
-            ชื่อจริง - นามสกุล :<input type="text" name="Busername" required>
-            ที่อยู่ :<input type="text" name="Baddress" required>
-            เบอร์โทร : <input type="number" name="Btal" required>
-            <button type="submit" class="btn btn-success" >บันทึก</button>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">ชื่อผู้เบิก</label>
+                <input type="text" class="form-control mb-2"  placeholder="นายขยัน หมั่นเพียร" name="Busername" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">ที่อยู่</label>
+                <input type="text" class="form-control mb-2" placeholder="แอสการ์ด" name="Baddress" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">เบอร์โทร</label>
+                <input type="text" class="form-control" placeholder="0123456789" name="Btal" required> 
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">ชื่อยาที่ต้องการเบิก</label>
+                <select class="form-control" name="drug_name" id="drug_name" required>
+                    {% for drug in drugs %}
+                    <option value="{{ drug.drug_name }}">{{ drug.drug_name }}</option>
+                {% endfor %}
+                </select>
+                <label for="quantity">จำนวน :</label>
+                <input type="number" min="0" max="10" class="form-control" name="quantity" id="quantity" required>
+              </div>
+              
+            <button type="submit" class="btn btn-success mt-3 mb-3 w-full" >บันทึก</button>
         </div>
     </div>
 </form>
