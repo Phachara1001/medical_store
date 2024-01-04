@@ -10,7 +10,7 @@
             <h5>ขอเบิกยา</h5>
         </div>
         <div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">
-            <label for="drug_id">ชื่อยา :</label>
+            <label for="drug_id"> ชื่อยา : </label>
             <select name="drug_id" id="drug_id">
                 {% for drug in drugs %}
                     <option value="{{ drug.drug_id }}">{{ drug.drug_name }}</option>

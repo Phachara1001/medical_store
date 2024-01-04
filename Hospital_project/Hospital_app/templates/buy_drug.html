@@ -8,19 +8,19 @@
           <h5>เบิกยา</h5>
       </div>
       <div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">
-          <label for="drug_id">ชื่อยา:</label>
+          <label for="drug_id">ชื่อยา : </label>
           <select name="drug_id" id="select_drug">
               {% for drug in drugdata %}
                   <option value="{{ drug.drug_id }}">{{ drug.drug_name }}</option>
               {% endfor %}
           </select>
-          <label for="drug_qty">จำนวณ:</label>
+          <label for="drug_qty">จำนวน : </label>
           <select name="drug_qty" id="select_qty">
               {% for drug in drugdata %}
                   <option value="{{ drug.drug_qty }}">{{ drug.drug_qty }}</option>
               {% endfor %}
           </select>
-          <label for="username">ชื่อคนเบิก:</label>
+          <label for="username">ชื่อคนเบิก : </label>
           <select name="username" id="select_username">
               {% for user in userdata %}
                   <option value="{{ user.username }}">{{ user.username }}</option>

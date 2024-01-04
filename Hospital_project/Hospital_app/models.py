@@ -9,7 +9,7 @@ class d_type(models.Model):
 class drug(models.Model):
     drug_id = models.AutoField(primary_key=True)
     drug_name = models.CharField(max_length=255)
-    drug_img = models.ImageField(upload_to='upload/img',null=True)
+    drug_img = models.ImageField(upload_to='images/drug',null=True)
     drug_type = models.ForeignKey(d_type, on_delete=models.CASCADE)
     drug_qty = models.IntegerField()
     drug_exp = models.DateField()
