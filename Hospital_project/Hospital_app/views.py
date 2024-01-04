@@ -117,21 +117,8 @@ def logout_view(request):
 from django.shortcuts import get_object_or_404, redirect
 
 def buy_drug_view(request):
-    if request.method == "POST":
-        drug_name = request.POST.get('drug_name')
-        drug_qty = request.POST.get('drug_qty')
-        username = request.POST.get('username')
-        selected_drug = get_object_or_404(drug, drug_name=drug_name)
-        selected_user = get_object_or_404(userbuy, username=username)
-        new_entry = userbuy(drug_id=selected_drug, username=selected_user)
-        new_entry.save()
-        return redirect('report')
-    drugs = drug.objects.all()
-    users = userbuy.objects.all()
-    context = {
-        "drugdata": drugs,
-        "userdata": users,
-    }
+    show_report = report_buy.objects.all() 
+    context  = {"report" : show_report} 
     return render(request, "buy_drug.html", context)
 
 
