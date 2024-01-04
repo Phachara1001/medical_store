@@ -4,7 +4,8 @@
 <form action="" method="POST">
 {% csrf_token %}
 <h5>เพิ่มประเภทยา</h5>
-ชื่อประเภทยา : <input type="text" name="type_name" required>
+<label for="exampleFormControlInput1">ชื่อยา</label>
+                <input type="text" class="form-control mb-2" placeholder="ชื่อยา" name="type_name" required>
 <button type="submit" class="btn btn-success" >บันทึก</button>
 </form>
 </div>
